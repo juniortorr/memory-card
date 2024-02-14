@@ -1,0 +1,19 @@
+What We Need: 
+    Design cards 
+        Give each a title
+        Mini Description
+    An array that keeps tracked of hit cards 
+    An API that we can grab images from 
+    A counter for the current score that doesn't refresh on rerender
+        (use effect OR just keep score in parent so it never rerende)
+    A tracker to keep track of the highest score 
+
+Basic Logic: 
+    API: 
+        Grab the first 50 images and store them in their own array
+        Render 10 different images 
+        Onclick 
+            Check if the array already contains the picture 
+            If it does, compare the current score to high score, then set current score to zero
+            Re render the pictures 
+            
