@@ -1,7 +1,6 @@
 What We Need: 
     Design cards 
-        Give each a title
-        Mini Description
+        Pull Title and Desc from API
     An array that keeps tracked of hit cards 
     An API that we can grab images from 
     A counter for the current score that doesn't refresh on rerender
@@ -16,4 +15,16 @@ Basic Logic:
             Check if the array already contains the picture 
             If it does, compare the current score to high score, then set current score to zero
             Re render the pictures 
-            
+
+
+Onclick Logic
+    First make an empty array for the choices and store it outside of the App 
+    What it needs to do: 
+        check if the selected picture is already in the array
+        if it is {
+                check the score to the previous high score
+        } else {
+                add a point to the board 
+        }
+
+    - start with it updating the score by using a state in the App component
