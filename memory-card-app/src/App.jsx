@@ -1,23 +1,26 @@
 import './assets/styles/App.css';
-const apiKey = process.env.REACT_APP_API_KEY;
-import { md5 } from 'js-md5';
-const hash = md5(process.env.REACT_APP_API_KEY);
+import data from './assets/helpers/fetch';
+import Card from './assets/components/Card';
+import { useEffect } from 'react';
 
 function App() {
-  async function logData() {
-    const response = await fetch(
-      `http://gateway.marvel.com/v1/public/comics?ts=1&apikey=40e806804049a89d6bedae9e247da779&hash=${hash}`,
-      {
-        mode: 'cors',
-      }
-    );
-    const json = await response.json();
-    console.log(json);
+  const randomIndexes = [];
+  const randomCharacters = [];
+  for (let i = 1; i < 11; i += 1) {
+    const randomNum = Math.floor(Math.random() * 60);
+    randomIndexes.push(randomNum);
   }
-  logData();
+  randomIndexes.map((key, index) => {
+    randomCharacters.push(data[index]);
+  });
+  console.log(randomCharacters);
+  return (
+    <main>
+      {randomCharacters.map((key) => {
+        return <Card character={key} key={key.id} />;
+      })}
+    </main>
+  );
 }
 
 export default App;
-
-// md5('Message to hash');
-//
