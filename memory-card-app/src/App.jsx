@@ -1,23 +1,25 @@
 import './assets/styles/App.css';
 import data from './assets/helpers/fetch';
 import Card from './assets/components/Card';
-import { useEffect } from 'react';
+import { useState } from 'react';
 
 function App() {
   const randomIndexes = [];
   const randomCharacters = [];
+  const [score, setScore] = useState(0);
   for (let i = 1; i < 11; i += 1) {
     const randomNum = Math.floor(Math.random() * 60);
     randomIndexes.push(randomNum);
   }
-  randomIndexes.map((key, index) => {
-    randomCharacters.push(data[index]);
+  randomIndexes.map((key) => {
+    randomCharacters.push(data[key]);
   });
   console.log(randomCharacters);
   return (
     <main>
-      {randomCharacters.map((key) => {
-        return <Card character={key} key={key.id} />;
+      <h2>Score: {score}</h2>
+      {randomCharacters.map((key, index) => {
+        return <Card character={key} key={index} score={score} setScore={setScore} />;
       })}
     </main>
   );
