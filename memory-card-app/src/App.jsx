@@ -5,14 +5,14 @@ import { useEffect, useState } from 'react';
 import { md5 } from 'js-md5';
 
 const selectedCharacters = [];
-
 const hash = md5(process.env.REACT_APP_API_KEY);
-// Statuses = [loading, loaded]
+
 function App() {
   const randomIndexes = [];
   const randomCharacters = [];
   const [score, setScore] = useState(0);
   const [apiData, setApidata] = useState([]);
+  const [highScore, setHighScore] = useState(0);
   useEffect(() => {
     async function getData() {
       try {
@@ -42,6 +42,7 @@ function App() {
     return (
       <main>
         <h2>Score: {score}</h2>
+        <h2>High Score: {highScore}</h2>
         {randomCharacters.map((key, index) => {
           return (
             <Card
@@ -50,6 +51,8 @@ function App() {
               key={index}
               score={score}
               setScore={setScore}
+              highScore={highScore}
+              setHighScore={setHighScore}
             />
           );
         })}
