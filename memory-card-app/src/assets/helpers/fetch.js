@@ -16,5 +16,4 @@ async function getData() {
   }
 }
 
-const data = await getData();
-export default data;
+export default getData;
